@@ -21,8 +21,8 @@ var conversation = document.querySelector('.conversation-container');
 
 form.addEventListener('submit', newMessage);
 
-var respostas = ["aeiou", "teste"];
-var mensagens = ["Desafio 2", "Desafio 3, <img src='https://media.istockphoto.com/id/517188688/pt/foto/paisagem-de-montanha.jpg?s=612x612&w=0&k=20&c=uFGUrUT6gA8FrTWhE10YYzngWPlDLssKxJiDs1Qw2Qs=' width = '230' height = '210'/>"]
+var respostas = ["maria laura moura mouzinho leite lopes", "impa", "-4", "-2", "-6", "nunca"];
+var mensagens = ["Imagem: <img src='' width = '230' height = '210'/>", "O horario mudou...", "Novamente, mais uma mudança", "Você aprendeu soma na escola, não é?", "Nasceu em 18 de janeiro de 1917 e faleceu", "Fim de jogo"]
 
 var desafioAtual = 0;
 
