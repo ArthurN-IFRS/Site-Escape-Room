@@ -16,7 +16,7 @@ setInterval(updateDeviceTime, 1000);
 updateDeviceTime();
 
 for (var i = 0; i < messageTime.length; i++) {
-	messageTime[i].innerHTML = moment().format('HH:mm A');
+	messageTime[i].innerHTML = moment().format('h:mm A');
 }
 
 
