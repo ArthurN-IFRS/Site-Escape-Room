@@ -4,15 +4,22 @@
 var deviceTime = document.querySelector('.status-bar .time');
 var messageTime = document.querySelectorAll('.message .time');
 
-deviceTime.innerHTML = moment().format('h:mm');
+var PuloTempo = 0;
 
-setInterval(function() {
-	deviceTime.innerHTML = moment().format('h:mm');
-}, 1000);
+function updateDeviceTime()
+{
+	var now = moment().add(PuloTempo, "minutes");
+	deviceTime.innerHTML = now.format("h:mm");
+}
+
+setInterval(updateDeviceTime, 1000);
+updateDeviceTime();
 
 for (var i = 0; i < messageTime.length; i++) {
 	messageTime[i].innerHTML = moment().format('h:mm A');
 }
+
+
 
 /* Message */
 
@@ -41,6 +48,16 @@ function newMessage(e) {
 		if (text === respostas[desafioAtual]) {
 			var resposta = buildMessage(mensagens[desafioAtual], "received");
 			conversation.appendChild(resposta);
+
+			if (desafioAtual === 1) {
+				PuloTempo = -60
+			}
+			else if (desafioAtual === 2) {
+				PuloTempo = 60
+			}
+			else {
+				PuloTempo = 0
+			}
 
 			desafioAtual++;
 		}
