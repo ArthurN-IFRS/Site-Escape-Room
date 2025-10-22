@@ -30,6 +30,7 @@ form.addEventListener('submit', newMessage);
 
 var respostas = ["maria laura moura mouzinho leite lopes", "impa", "-4", "-2", "-6", "nunca"];
 var mensagens = ["<img src='https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2021/06/31267_DEF9FCE38114473C.jpeg?w=1200&h=675&crop=1' width = '230' height = '210'/>", "O horario mudou...", "Novamente, mais uma mudança", "Você aprendeu soma na escola, não é?", "Nasceu em 18 de janeiro de 1917 e faleceu", "Fim de jogo"]
+var dicas = ["Pesquisar o nome dela"];
 
 var desafioAtual = 0;
 
@@ -60,6 +61,12 @@ function newMessage(e) {
 			}
 
 			desafioAtual++;
+		}
+
+		if (text === "dica")
+		{
+			var dica = buildMessage(dicas[desafioAtual], "received");
+			conversation.appendChild(dica);
 		}
 	}
 
