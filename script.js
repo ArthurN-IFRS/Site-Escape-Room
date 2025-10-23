@@ -63,10 +63,15 @@ function newMessage(e) {
 			desafioAtual++;
 		}
 
-		if (text === "dica")
-		{
+		else if (text === "dica") {
 			var dica = buildMessage(dicas[desafioAtual], "received");
 			conversation.appendChild(dica);
+		}
+
+		else
+		{
+			var erro = buildMessage("Você errou, tente novamente", "received");
+			conversation.appendChild(erro);
 		}
 	}
 
