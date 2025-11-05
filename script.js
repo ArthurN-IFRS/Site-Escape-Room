@@ -64,7 +64,7 @@ function newMessage(e) {
 		}
 
 		else if (text === "dica") {
-			var dica = buildMessage(dicas[desafioAtual], "received");
+			var dica = buildMessage(dicas[desafioAtual ], "received");
 			conversation.appendChild(dica);
 		}
 
