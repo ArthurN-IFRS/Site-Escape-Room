@@ -4,11 +4,8 @@
 var deviceTime = document.querySelector('.status-bar .time');
 var messageTime = document.querySelectorAll('.message .time');
 
-var PuloTempo = 0;
-
-function updateDeviceTime()
-{
-	var now = moment().add(PuloTempo, "minutes");
+function updateDeviceTime() {
+	var now = moment().add("hours", "minutes");
 	deviceTime.innerHTML = now.format("h:mm");
 }
 
@@ -28,8 +25,8 @@ var conversation = document.querySelector('.conversation-container');
 
 form.addEventListener('submit', newMessage);
 
-var respostas = ["maria laura moura mouzinho leite lopes", "impa", "-4", "-2", "-6", "nunca"];
-var mensagens = ["<img src='https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2021/06/31267_DEF9FCE38114473C.jpeg?w=1200&h=675&crop=1' width = '230' height = '210'/>", "O horario mudou...", "Novamente, mais uma mudança", "Você aprendeu soma na escola, não é?", "Nasceu em 18 de janeiro de 1917 e faleceu", "Fim de jogo"]
+var respostas = ["20 de junho de 2013", "impa", "-4", "-2"];
+var mensagens = ["<img src='https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2021/06/31267_DEF9FCE38114473C.jpeg?w=1200&h=675&crop=1' width = '230' height = '210'/>", "3", "4", "Fim de jogo"]
 var dicas = ["Pesquisar o nome dela"];
 
 var desafioAtual = 0;
@@ -49,16 +46,6 @@ function newMessage(e) {
 		if (text === respostas[desafioAtual]) {
 			var resposta = buildMessage(mensagens[desafioAtual], "received");
 			conversation.appendChild(resposta);
-
-			if (desafioAtual === 1) {
-				PuloTempo = -60
-			}
-			else if (desafioAtual === 2) {
-				PuloTempo = 60
-			}
-			else {
-				PuloTempo = 0
-			}
 
 			desafioAtual++;
 		}
