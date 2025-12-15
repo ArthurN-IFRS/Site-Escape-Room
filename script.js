@@ -27,10 +27,11 @@ form.addEventListener('submit', newMessage);
 
 var respostas = ["20 de junho de 2013", "impa", "exílio", "professora emérita"];
 var mensagens = ["<img src='https://admin.cnnbrasil.com.br/wp-content/uploads/sites/12/2021/06/31267_DEF9FCE38114473C.jpeg?w=1200&h=675&crop=1' width = '230' height = '210'/>", "A situação ficou insust@ntável quando tentaram e#cluir minhas aulas. Foi então que compreendi que deixar o pa*s era inevitáve%, mesmo mantendo minha fé na c+ência e no p!vo que deixei para trás."
-, "Um título é a prova de que alguém deixou sua contribuição para uma comunidade. A UFRJ reconheceu a minha. Você sabe qual foi o título que recebi?", "Meus parabéns! Você relembrou de mim, agora poderei descansar. "]
+	, "Um título é a prova de que alguém deixou sua contribuição para uma comunidade. A UFRJ reconheceu a minha. Você sabe qual foi o título que recebi?", "Meus parabéns! Você relembrou de mim, agora poderei descansar."]
 var dicas = ["Qual foi a data em que tive de ir?", "Fui uma das fundadores dele. Seria ótimo se existisse uma ferramenta para pesquisar imagens.", "Eu me pergunto, se eu trocasse os símbolos por letras, que palavra formaria?", "Eu ainda tenho lembranças sobre isso, se não me engano foi em 1996."];
 
 var desafioAtual = 0;
+var tempoinicial = Date.now();
 
 function newMessage(e) {
 	var input = e.target.input;
@@ -44,22 +45,29 @@ function newMessage(e) {
 		conversation.appendChild(message);
 		animateMessage(message);
 
-		if (text === respostas[desafioAtual]) {
-			var resposta = buildMessage(mensagens[desafioAtual], "received");
-			conversation.appendChild(resposta);
+		if (desafioAtual < 4) {
+			if (text === respostas[desafioAtual]) {
+				var resposta = buildMessage(mensagens[desafioAtual], "received");
+				conversation.appendChild(resposta);
 
-			desafioAtual++;
+				desafioAtual++;
+			}
+			else if (text === "dica") {
+				var dica = buildMessage(dicas[desafioAtual], "received");
+				conversation.appendChild(dica);
+			}
+
+			else {
+				var erro = buildMessage("Você errou, tente novamente", "received");
+				conversation.appendChild(erro);
+			}
 		}
-
-		else if (text === "dica") {
-			var dica = buildMessage(dicas[desafioAtual ], "received");
-			conversation.appendChild(dica);
-		}
-
-		else
+		if (desafioAtual === respostas.length)
 		{
-			var erro = buildMessage("Você errou, tente novamente", "received");
-			conversation.appendChild(erro);
+			var tempo = Math.floor((Date.now() - tempoinicial) / 1000);
+
+			var estatisticas = buildMessage(`Você levou ${tempo} segundos para terminar os desafios da sala`, "received");
+			conversation.appendChild(estatisticas);
 		}
 	}
 
