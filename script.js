@@ -85,13 +85,12 @@ function newMessage(e) {
 				conversation.appendChild(erro);
 			}
 		}
-
-		if (desafioAtual === respostas.length)
-		{
+		if (desafioAtual === respostas.length) {
 			var tempo = Math.floor((Date.now() - tempoinicial) / 1000);
 
 			var estatisticas = buildMessage(`Você levou ${tempo} segundos para terminar os desafios da sala`, "received");
 			conversation.appendChild(estatisticas);
+			desafioAtual++;
 		}
 	}
 
