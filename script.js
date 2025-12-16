@@ -33,6 +33,28 @@ var dicas = ["Qual foi a data em que tive de ir?", "Fui uma das fundadores dele.
 var desafioAtual = 0;
 var tempoinicial = Date.now();
 
+function trocaPerfil(desafioAtual) {
+	let imgPerfil = document.getElementById("Maria_Transicao");
+	let caminho = "";
+
+	switch (desafioAtual) {
+		case 1:
+			caminho = "Imagens/Maria2.jpg";
+			break;
+		case 2:
+			caminho = "Imagens/Maria3.jpg";
+			break;
+		case 3:
+			caminho = "Imagens/Maria4.jpg";
+			break;
+		case 4:
+			caminho = "Imagens/Maria5.jpg";
+			break;
+	}
+
+	imgPerfil.src = caminho;
+}
+
 function newMessage(e) {
 	var input = e.target.input;
 
@@ -51,6 +73,7 @@ function newMessage(e) {
 				conversation.appendChild(resposta);
 
 				desafioAtual++;
+				trocaPerfil(desafioAtual);
 			}
 			else if (text === "dica") {
 				var dica = buildMessage(dicas[desafioAtual], "received");
@@ -62,6 +85,7 @@ function newMessage(e) {
 				conversation.appendChild(erro);
 			}
 		}
+
 		if (desafioAtual === respostas.length)
 		{
 			var tempo = Math.floor((Date.now() - tempoinicial) / 1000);
