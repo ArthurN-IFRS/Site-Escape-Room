@@ -79,8 +79,13 @@ function newMessage(e) {
 				var dica = buildMessage(dicas[desafioAtual], "received");
 				conversation.appendChild(dica);
 			}
+			else if (text.trim().length === 0) {
+				var aviso = buildMessage("Digite uma mensagem que contenha caracteres", "received");
+				conversation.appendChild(aviso);
+			}
 
-			else {
+			else
+			{
 				var erro = buildMessage("Você errou, tente novamente", "received");
 				conversation.appendChild(erro);
 			}
